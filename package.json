@@ -1,0 +1,24 @@
+{
+  "name": "trivia-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "trivia-cli": "./bin/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lneagle/trivia-CLI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lneagle/trivia-CLI/issues"
+  },
+  "homepage": "https://github.com/Lneagle/trivia-CLI#readme"
+}
