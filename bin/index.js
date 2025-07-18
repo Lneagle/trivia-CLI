@@ -1,6 +1,6 @@
-#!usr/bin/env node
+#!/usr/bin/env node
 
-import { questions } from "../src/lib/Questions.js";
+import { questions } from "../src/lib/questions.js";
 import { select } from "@inquirer/prompts";
 import chalk from "chalk";
 
