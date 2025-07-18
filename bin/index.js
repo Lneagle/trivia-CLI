@@ -1,14 +1,6 @@
 #!usr/bin/env node
 
 import { questions } from "../src/lib/Questions.js";
-/* let questions = [
-    {
-        question: "What is the term for a group of flamingos?",
-        options: ["Murder", "Flamboyance", "Herd", "Gaggle"],
-        answer: "Flamboyance"
-    }
-];*/
-
 import { select } from "@inquirer/prompts";
 import chalk from "chalk";
 
@@ -23,21 +15,21 @@ async function displayQuestion() {
     });
     responses.push({questionText: currentQuestion.question, answer: currentQuestion.answer, correct: userChoice === currentQuestion.answer ? true : false});
     if (questions.length > 0 && timer > 0) {
-        console.log(`${timer} seconds left!`);
+        console.log(chalk.yellow(`\n${timer} seconds left!`));
         displayQuestion();
     } else {
         if (timer > 0) {
-            console.log("No more questions!");
+            console.log(chalk.yellow("\nNo more questions!"));
             clearInterval(timerId);
         } else {
-            console.log ("Time's up!");
+            console.log (chalk.yellow("Time's up!"));
         }
         displayFeedback();
     }
 }
 
 function displayFeedback() {
-    console.log(`Great game! You answered ${responses.length} questions.  Let's see how you did.`);
+    console.log(chalk.blue(`\nGreat game! You answered ${responses.length} questions.  Let's see how you did.`));
     let numCorrect = 0;
     responses.forEach((response) => {
         console.log(response.questionText);
@@ -48,14 +40,14 @@ function displayFeedback() {
             console.log(chalk.red(`Sorry! The answer was ${response.answer}`));
         }
     });
-    console.log(`You got ${numCorrect} out of ${responses.length} correct!`)
+    console.log(chalk.blue(`\nYou got ${numCorrect} out of ${responses.length} correct!`));
 }
 
 let timer = 60;
 let timerId;
 
 const action = await select({
-    message: "Main Menu",
+    message: "Welcome to Trivia CLI!",
     choices: [
         { name: "Start Game", value: "start" },
         { name: "Quit", value: "quit" }
@@ -64,7 +56,7 @@ const action = await select({
 
 switch (action) {
     case "start":
-        console.log("Welcome to Trivia CLI! Answer as many questions as you can in 1 minute.")
+        console.log(chalk.blue("\nAnswer as many questions as you can in 1 minute.\n"));
         timerId = setInterval(() => {
             if (timer > 0) {
                 timer--;
@@ -78,5 +70,3 @@ switch (action) {
         console.log("Goodbye!");
         process.exit(0);
 }
-
-//program.parse(process.argv);
