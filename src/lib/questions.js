@@ -1,3 +1,4 @@
+//Array of trivia questions
 export const questions = [
     {
         question: "What is the term for a group of flamingos?",
